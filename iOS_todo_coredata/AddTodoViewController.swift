@@ -72,7 +72,16 @@ class AddTodoViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         // 選択時の処理
-        self.categoryTextField.text = self.categories[row]
+        if self.categories.count != 0{
+            self.categoryTextField.text = self.categories[row]
+        } else {
+            let alertController:UIAlertController = UIAlertController(title: "確認", message: "カテゴリがありません", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default){
+                action in
+            }
+            alertController.addAction(okAction)
+            present(alertController, animated: true, completion: nil)
+        }
     }
     
     // datePicker作成
@@ -127,6 +136,10 @@ class AddTodoViewController: UIViewController, UIPickerViewDelegate, UIPickerVie
         self.createDatePicker()
         self.updateSaveButtonState()
 
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        self.categories = UserDefaults.standard.object(forKey: "todoCategories") as! [String]
     }
     
     // navbarのcancelボタン押下

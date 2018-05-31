@@ -5,7 +5,7 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
 
     @IBOutlet weak var tableView: UITableView!
     
-    let userDefaults = UserDefaults.standard
+    var userDefaults = UserDefaults.standard
     
     var todos:[Todo] = []
 //    var todosToShow:[String:[[String]]] = ["Todo":[[]], "Task":[[]]]
@@ -30,6 +30,12 @@ class ViewController: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     
     override func viewWillAppear(_ animated: Bool) {
+        if self.userDefaults.object(forKey: "todoCategories") != nil {
+            self.todoCategories = self.userDefaults.stringArray(forKey: "todoCategories")!
+            for i in 0..<todoCategories.count {
+                self.todosToShow[todoCategories[i]] = [[]]
+            }
+        }
         getData()
         tableView.reloadData()
     }

@@ -74,6 +74,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="リスト" id="c6I-CM-Scm">
+                        <barButtonItem key="leftBarButtonItem" title="カテゴリ編集" id="izr-mw-KU7">
+                            <connections>
+                                <segue destination="AOD-4Y-SUL" kind="show" identifier="toEditCategory" id="5Fu-aa-mfH"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="h6P-5Z-obb">
                             <connections>
                                 <segue destination="RJD-Rs-wTq" kind="presentation" id="GXm-dZ-6UI"/>
@@ -86,7 +91,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="705" y="726"/>
+            <point key="canvasLocation" x="764" y="347"/>
         </scene>
         <!--タスク追加-->
         <scene sceneID="nRH-as-Y4H">
@@ -147,24 +152,6 @@
                                     <action selector="categoryTextFieldChanged:" destination="LI6-Ht-rna" eventType="editingChanged" id="gtb-nO-NGT"/>
                                 </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfF-6S-bxd">
-                                <rect key="frame" x="258" y="294" width="65" height="39"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.36309975385665894" green="0.91088038682937622" blue="0.82602041959762573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="編集"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <color key="backgroundColor" red="0.66377002000808716" green="0.88370907306671143" blue="0.92834258079528809" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </variation>
-                                <connections>
-                                    <segue destination="FpP-oU-zxS" kind="show" identifier="toEditCategories" id="9uR-wL-k2f"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="sZh-xg-fNd"/>
@@ -190,9 +177,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qGY-Br-zwd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2448.8000000000002" y="724.58770614692662"/>
+            <point key="canvasLocation" x="2860" y="347"/>
         </scene>
-        <!--Edit Categories View Controller-->
+        <!--カテゴリ編集-->
         <scene sceneID="Yn0-JE-V3n">
             <objects>
                 <viewController id="spe-t7-CSo" customClass="editCategoriesViewController" customModule="iOS_todo_coredata" customModuleProvider="target" sceneMemberID="viewController">
@@ -200,27 +187,78 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="カテゴリ追加" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TMJ-2y-nbc">
+                                <rect key="frame" x="51" y="87" width="94" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="カテゴリを入力" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8yk-bn-1qi">
+                                <rect key="frame" x="51" y="116" width="207" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q9o-ux-kxU">
+                                <rect key="frame" x="266" y="110" width="67" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.83751696348190308" green="0.95650500059127808" blue="0.95883733034133911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                <state key="normal" title="追加"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="onAddButton:" destination="spe-t7-CSo" eventType="touchUpInside" id="BO5-5O-Ey3"/>
+                                </connections>
+                            </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="D8f-bk-4Nw">
-                                <rect key="frame" x="67" y="110" width="240" height="280"/>
+                                <rect key="frame" x="37" y="160" width="301" height="477"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="categoryCell" textLabel="e4S-sd-k1k" style="IBUITableViewCellStyleDefault" id="fQX-6P-uNa">
+                                        <rect key="frame" x="0.0" y="28" width="301" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fQX-6P-uNa" id="4KQ-Vb-g3L">
+                                            <rect key="frame" x="0.0" y="0.0" width="301" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="e4S-sd-k1k">
+                                                    <rect key="frame" x="15" y="0.0" width="271" height="43.5"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <viewLayoutGuide key="safeArea" id="Sr1-Mb-f4g"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oKr-k8-WWr">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3K8-H6-zp1">
+                    <navigationItem key="navigationItem" title="カテゴリ編集" id="oKr-k8-WWr">
+                        <barButtonItem key="rightBarButtonItem" title="戻る" id="3K8-H6-zp1">
                             <connections>
                                 <action selector="onCancel:" destination="spe-t7-CSo" id="mvI-fz-XzL"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="Nuc-Q6-QGX"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addCategoryTextField" destination="8yk-bn-1qi" id="aL0-DV-J6m"/>
+                        <outlet property="categoryTable" destination="D8f-bk-4Nw" id="Ahu-y2-Oid"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iPj-69-HrU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4216.8000000000002" y="724.58770614692662"/>
+            <point key="canvasLocation" x="1727" y="1173"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="4cb-tl-DGT">
@@ -238,7 +276,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gnn-4L-WQt" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-132" y="727"/>
+            <point key="canvasLocation" x="-434" y="347"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="NWF-Pl-8ub">
@@ -256,28 +294,28 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5HD-xg-Jna" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1574" y="1273"/>
+            <point key="canvasLocation" x="1826" y="-96"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="ICY-9J-u81">
+        <scene sceneID="Vvg-l9-msb">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FpP-oU-zxS" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="AOD-4Y-SUL" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="BYV-hn-vqv">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="a41-Du-rX4">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="spe-t7-CSo" kind="relationship" relationship="rootViewController" id="R20-nb-XWN"/>
+                        <segue destination="spe-t7-CSo" kind="relationship" relationship="rootViewController" id="ov2-Fk-D0n"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="YiF-3e-e4e" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G2I-os-epB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3319" y="1272"/>
+            <point key="canvasLocation" x="764" y="1173"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="3cq-R0-cff"/>
+        <segue reference="IVM-fh-aj0"/>
     </inferredMetricsTieBreakers>
 </document>
